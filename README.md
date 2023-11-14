@@ -1,6 +1,4 @@
-# teste_desenvolvedor_flutter_target_sistemas
-
-Teste desenvolvedor Flutter Target Sistemas.
+# Teste desenvolvedor Flutter Target Sistemas
 
 ## Running the project
 
