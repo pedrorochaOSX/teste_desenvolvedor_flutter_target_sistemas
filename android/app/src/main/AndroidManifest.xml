@@ -2,7 +2,7 @@
     <application
         android:label="teste_pedro_rocha_target_sistemas"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

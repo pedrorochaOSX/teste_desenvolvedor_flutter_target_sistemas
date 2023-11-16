@@ -13,6 +13,37 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  flutter_native_splash: ^2.3.2
+  flutter_launcher_icons: ^0.13.1
+
+# dart run flutter_native_splash:create
+flutter_native_splash:
+  android: true
+  ios: true
+  
+  image: "lib/assets/splash/target_sistemas_splash_light.png"
+  color: "#FFFFFF"
+  icon_background_color: "#FFFFFF"
+
+  image_dark: "lib/assets/splash/target_sistemas_splash_dark.png"
+  color_dark: "#191919"
+  icon_background_color_dark: "#191919"
+
+  android_12:
+    image: "lib/assets/splash/target_sistemas_splash_light.png"
+    color: "#FFFFFF"
+    icon_background_color: "#FFFFFF"
+    
+    image_dark: "lib/assets/splash/target_sistemas_splash_dark.png"
+    color_dark: "#191919"
+    icon_background_color_dark: "#191919"
+    
+# dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "lib/assets/app_launcher_icons/target_sistemas_launcher_icon.png"
+  adaptive_icon_background: "#191919"
+  adaptive_icon_foreground:  "lib/assets/app_launcher_icons/target_sistemas_launcher_icon.png"
 
 dev_dependencies:
   flutter_test:
@@ -21,5 +52,11 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  generate: true
+
+  fonts:
+      - family: NotoSans
+        fonts:
+          - asset: lib/assets/fonts/font_family_noto_sans/NotoSans-Regular.ttf
 
   uses-material-design: true
