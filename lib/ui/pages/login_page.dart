@@ -45,6 +45,32 @@ class _LoginPageState extends State<LoginPage> {
     await prefs.setBool('isDarkTheme', isDarkTheme);
   }
 
+  void isLastCharacterSpace() {
+    if (usernameTextController.text.isNotEmpty &&
+        passwordTextController.text.isNotEmpty) {
+      String filteredUsername = usernameTextController.text.trim();
+      String filteredPassword = passwordTextController.text.trim();
+
+      if (filteredUsername.substring(filteredUsername.length - 1) == ' ' ||
+          filteredPassword.substring(filteredPassword.length - 1) == ' ') {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "Não podem existir espaços no final dos campos acima",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+                fontSize: 14,
+              ),
+            ),
+            duration: Duration(seconds: 2),
+            backgroundColor: Theme.of(context).colorScheme.onPrimary,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
