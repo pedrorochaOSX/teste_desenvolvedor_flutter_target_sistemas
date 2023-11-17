@@ -26,10 +26,10 @@ class MyThemes {
     colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: Color(0xff44BE6E), // Button color
-      onPrimary: Color(0xffffffff), // Textfields color
-      secondary: Color(0xff202838), // Textfields prefix icon color
-      onSecondary: Color(0xff000000), // Textfields text color
-      tertiary: Color(0xffffffff), // White color
+      onPrimary: Color(0xff202838), // Textfields color
+      secondary: Color(0x85ffffff), // Textfields prefix icon color
+      onSecondary: Color(0xffffffff), // Textfields text color
+      tertiary: Color(0x85000000), // Textfields hint text color
       onTertiary: Color(0xff000000), // Black color
       error: Color(0xffffffff),
       onError: Color(0xffffffff),
@@ -37,7 +37,8 @@ class MyThemes {
       onBackground: Color(0xFFffffff), // Background color 2
       surface: Color(0xffffffff), // White color
       onSurface: Color(0xff000000), // Black color
-      inverseSurface: Color(0xFF1E4D61), //
+      inverseSurface: Color(0xffffffff), // White color
+      onInverseSurface: Color(0xff000000), // Black color
     ),
   );
 
@@ -46,10 +47,10 @@ class MyThemes {
     colorScheme: ColorScheme(
       brightness: Brightness.dark,
       primary: Color(0xff44BE6E), // Button color
-      onPrimary: Color(0xff202838), // Texfields color
-      secondary: Color(0xffffffff), // Textfields prefix icon color
-      onSecondary: Color(0xffffffff), // Textfields text color
-      tertiary: Color(0xff000000), // Black color
+      onPrimary: Color(0xffffffff), // Texfields color
+      secondary: Color(0xff202838), // Textfields prefix icon color
+      onSecondary: Color(0xff000000), // Textfields text color
+      tertiary: Color(0x85000000), // Textfields hint text color
       onTertiary: Color(0xffffffff), // White color
       error: Color(0xff000000),
       onError: Color(0xff000000),
@@ -57,6 +58,8 @@ class MyThemes {
       onBackground: Color(0xFF2C958F), // Background color 2
       surface: Color(0xffffffff), // White color
       onSurface: Color(0xff000000), // Black color
+      inverseSurface: Color(0xff000000), // Black color
+      onInverseSurface: Color(0xffffffff), // White color
     ),
   );
 }
