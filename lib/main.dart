@@ -35,22 +35,22 @@ class MyApp extends StatelessWidget {
         MediaQuery.of(context).platformBrightness;
 
     ThemeData appTheme;
-    if (systemBrightness == Brightness.dark) {
+    if (themeProvider.themeMode == ThemeMode.dark) {
       appTheme = MyThemes.darkTheme;
     } else {
       appTheme = MyThemes.lightTheme;
     }
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: systemBrightness == Brightness.dark
+      statusBarColor: (themeProvider.themeMode == ThemeMode.dark)
           ? MyThemes.darkTheme.colorScheme.background
           : MyThemes.lightTheme.colorScheme.background,
-      statusBarIconBrightness: systemBrightness == Brightness.dark
+      statusBarIconBrightness: (themeProvider.themeMode == ThemeMode.dark)
           ? Brightness.light
           : Brightness.dark,
-      systemNavigationBarColor: systemBrightness == Brightness.dark
-          ? MyThemes.darkTheme.colorScheme.background
-          : MyThemes.lightTheme.colorScheme.background,
-      systemNavigationBarIconBrightness: systemBrightness == Brightness.dark
+      systemNavigationBarColor: (themeProvider.themeMode == ThemeMode.dark)
+          ? MyThemes.darkTheme.colorScheme.onBackground
+          : MyThemes.lightTheme.colorScheme.onBackground,
+      systemNavigationBarIconBrightness: (themeProvider.themeMode == ThemeMode.dark)
           ? Brightness.light
           : Brightness.dark,
       systemNavigationBarDividerColor: Colors.transparent,

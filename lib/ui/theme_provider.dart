@@ -11,6 +11,11 @@ class ThemeProvider extends ChangeNotifier {
     prefs.setBool('isDarkTheme', isDarkTheme);
     themeMode = isDarkTheme ? ThemeMode.dark : ThemeMode.light;
   }
+
+  void toggleTheme(bool isDark) {
+    themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
 }
 
 class MyThemes {
@@ -24,14 +29,15 @@ class MyThemes {
       onPrimary: Color(0xffffffff), // Textfields color
       secondary: Color(0xff202838), // Textfields prefix icon color
       onSecondary: Color(0xff000000), // Textfields text color
-      tertiary: Color(0xffffffff),
-      onTertiary: Color(0xff000000),
+      tertiary: Color(0xffffffff), // White color
+      onTertiary: Color(0xff000000), // Black color
       error: Color(0xffffffff),
       onError: Color(0xffffffff),
-      background: Color(0xff2C958F), // Light background color
-      onBackground: Color(0xff1E4E62), // Dark background color
+      background: Color(0xff50FFF5), // Background color 1
+      onBackground: Color(0xFFffffff), // Background color 2
       surface: Color(0xffffffff), // White color
       onSurface: Color(0xff000000), // Black color
+      inverseSurface: Color(0xFF1E4D61), //
     ),
   );
 
@@ -43,12 +49,12 @@ class MyThemes {
       onPrimary: Color(0xff202838), // Texfields color
       secondary: Color(0xffffffff), // Textfields prefix icon color
       onSecondary: Color(0xffffffff), // Textfields text color
-      tertiary: Color(0xffffffff),
-      onTertiary: Color(0xff000000),
+      tertiary: Color(0xff000000), // Black color
+      onTertiary: Color(0xffffffff), // White color
       error: Color(0xff000000),
       onError: Color(0xff000000),
-      background: Color(0xff1E4E62), // Dark background color
-      onBackground: Color(0xff2C958F), // Light background color
+      background: Color(0xff1E4D61), // Background color 1
+      onBackground: Color(0xFF2C958F), // Background color 2
       surface: Color(0xffffffff), // White color
       onSurface: Color(0xff000000), // Black color
     ),
