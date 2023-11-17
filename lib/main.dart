@@ -31,9 +31,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    final Brightness systemBrightness =
-        MediaQuery.of(context).platformBrightness;
-
     ThemeData appTheme;
     if (themeProvider.themeMode == ThemeMode.dark) {
       appTheme = MyThemes.darkTheme;
