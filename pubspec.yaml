@@ -11,8 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+    
+  provider: 
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.15
   flutter_native_splash: ^2.3.2
   flutter_launcher_icons: ^0.13.1
 
@@ -42,6 +44,8 @@ flutter_native_splash:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
+  remove_alpha_ios: true
+  
   image_path: "lib/assets/app_launcher_icons/target_sistemas_launcher_icon.png"
   adaptive_icon_background: "#191919"
   adaptive_icon_foreground:  "lib/assets/app_launcher_icons/target_sistemas_launcher_icon.png"
