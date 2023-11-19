@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // Data
 import 'package:teste_desenvolvedor_flutter_target_sistemas/data/models/user_model.dart';
@@ -68,6 +69,15 @@ class _LoginPageState extends State<LoginPage> {
           ),
         );
       }
+    }
+  }
+
+  _launchURL(String url) async {
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
@@ -154,56 +164,64 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ],
                             ),
-                            TextField(
-                              minLines: 1,
-                              maxLines: 1,
-                              maxLength: 20,
-                              maxLengthEnforcement: null,
-                              controller: usernameTextController,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp(r'[a-zA-Z0-9]')),
-                              ],
-                              decoration: InputDecoration(
-                                counterText: "",
-                                contentPadding: EdgeInsets.only(
-                                    top: 16, bottom: 16, left: 30, right: 30),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                            Card(
+                              elevation: 3,
+                              shadowColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: TextField(
+                                minLines: 1,
+                                maxLines: 1,
+                                maxLength: 20,
+                                maxLengthEnforcement: null,
+                                controller: usernameTextController,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[a-zA-Z0-9]')),
+                                ],
+                                decoration: InputDecoration(
+                                  counterText: "",
+                                  contentPadding: EdgeInsets.only(
+                                      top: 16, bottom: 16, left: 30, right: 30),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSecondary,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  filled: true,
+                                  fillColor:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                  labelText: null,
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 16, right: 16),
+                                    child: Icon(
+                                      Icons.person_rounded,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .onSecondary,
-                                      width: 2,
+                                          .secondary,
                                     ),
-                                    borderRadius: BorderRadius.circular(8)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(8)),
-                                filled: true,
-                                fillColor:
-                                    Theme.of(context).colorScheme.onPrimary,
-                                labelText: null,
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16),
-                                  child: Icon(
-                                    Icons.person_rounded,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
                                   ),
+                                  errorText: errorText,
                                 ),
-                                errorText: errorText,
+                                cursorColor:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondary),
                               ),
-                              cursorColor:
-                                  Theme.of(context).colorScheme.onSecondary,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondary),
                             ),
                           ],
                         ),
@@ -229,86 +247,94 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ],
                             ),
-                            TextField(
-                              minLines: 1,
-                              maxLines: 1,
-                              maxLength: 20,
-                              maxLengthEnforcement: null,
-                              controller: passwordTextController,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp(r'[a-zA-Z0-9]')),
-                              ],
-                              obscureText: passwordVisible ? false : true,
-                              decoration: InputDecoration(
-                                counterText: "",
-                                contentPadding: EdgeInsets.only(
-                                    top: 16, bottom: 16, left: 30, right: 30),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                            Card(
+                              elevation: 3,
+                              shadowColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: TextField(
+                                minLines: 1,
+                                maxLines: 1,
+                                maxLength: 20,
+                                maxLengthEnforcement: null,
+                                controller: passwordTextController,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp(r'[a-zA-Z0-9]')),
+                                ],
+                                obscureText: passwordVisible ? false : true,
+                                decoration: InputDecoration(
+                                  counterText: "",
+                                  contentPadding: EdgeInsets.only(
+                                      top: 16, bottom: 16, left: 30, right: 30),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSecondary,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  filled: true,
+                                  fillColor:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                  labelText: null,
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 16, right: 16),
+                                    child: Icon(
+                                      Icons.lock_rounded,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .onSecondary,
-                                      width: 2,
+                                          .secondary,
                                     ),
-                                    borderRadius: BorderRadius.circular(8)),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(8)),
-                                filled: true,
-                                fillColor:
-                                    Theme.of(context).colorScheme.onPrimary,
-                                labelText: null,
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16),
-                                  child: Icon(
-                                    Icons.lock_rounded,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
                                   ),
-                                ),
-                                suffixIcon: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 4, right: 8),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        passwordVisible = !passwordVisible;
-                                      });
-                                    },
-                                    splashRadius: 16,
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    icon: passwordVisible
-                                        ? Icon(
-                                            Icons.visibility_rounded,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
-                                            size: 24,
-                                          )
-                                        : Icon(
-                                            Icons.visibility_off_rounded,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
-                                            size: 24,
-                                          ),
+                                  suffixIcon: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 4, right: 8),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          passwordVisible = !passwordVisible;
+                                        });
+                                      },
+                                      splashRadius: 16,
+                                      splashColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      icon: passwordVisible
+                                          ? Icon(
+                                              Icons.visibility_rounded,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              size: 24,
+                                            )
+                                          : Icon(
+                                              Icons.visibility_off_rounded,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              size: 24,
+                                            ),
+                                    ),
                                   ),
+                                  errorText: errorText,
                                 ),
-                                errorText: errorText,
+                                cursorColor:
+                                    Theme.of(context).colorScheme.onSecondary,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondary),
                               ),
-                              cursorColor:
-                                  Theme.of(context).colorScheme.onSecondary,
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondary),
                             ),
                           ],
                         ),
@@ -392,8 +418,8 @@ class _LoginPageState extends State<LoginPage> {
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            shadowColor: Colors.transparent,
+                            elevation: 5,
+                            shadowColor: Colors.black,
                             backgroundColor:
                                 Theme.of(context).colorScheme.primary,
                             minimumSize: Size(200, 50),
@@ -413,7 +439,9 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _launchURL('https://www.google.com');
+                    },
                     child: Text(
                       'Política de Privacidade',
                       style: TextStyle(
