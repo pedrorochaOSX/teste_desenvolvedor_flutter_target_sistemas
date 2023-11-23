@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     setState(() {
-      isDarkTheme = prefs.getBool('isDarkTheme') ?? false;
+      isDarkTheme = prefs.getBool('isDarkTheme') ?? true;
       prefs.setBool('isDarkTheme', isDarkTheme);
     });
   }
@@ -74,11 +74,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _launchURL(String url) async {
     Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw 'Could not launch $url';
-    }
+    await launchUrl(uri);
   }
 
   @override
@@ -440,7 +436,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      _launchURL('https://www.google.com');
+                      _launchURL("https://www.google.com");
                     },
                     child: Text(
                       'Política de Privacidade',
